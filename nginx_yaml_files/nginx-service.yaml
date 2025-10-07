@@ -1,15 +1,12 @@
-apiVersion: apps/v1
-kind: service
+apiVersion: v1
+kind: Service
 metadata:
-    labels:
+  name: nginx-service
+spec:
+  selector:
     app: nginx
-    name: nginx-Service
-    namespace: default	
-    spec:
-      ports:
-	-port: 80
-	protocol: TCP
-	tragetPort: 80
-	Selector:
-	app: ngnix
-        type: NodePort
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
